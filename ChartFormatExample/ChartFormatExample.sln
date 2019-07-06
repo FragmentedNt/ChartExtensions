@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartFormatExample", "Chart
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathRoundExtension", "..\MathRoundExtensions\MathRoundExtension\MathRoundExtension\MathRoundExtension.csproj", "{DFD782DF-A09A-4852-9BAF-24F9A5A1F179}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartFormatExampleTests", "ChartFormatExampleTests\ChartFormatExampleTests.csproj", "{C18A3A3D-751C-4A49-A334-414EF5D0CDFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DFD782DF-A09A-4852-9BAF-24F9A5A1F179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFD782DF-A09A-4852-9BAF-24F9A5A1F179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFD782DF-A09A-4852-9BAF-24F9A5A1F179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18A3A3D-751C-4A49-A334-414EF5D0CDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18A3A3D-751C-4A49-A334-414EF5D0CDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18A3A3D-751C-4A49-A334-414EF5D0CDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18A3A3D-751C-4A49-A334-414EF5D0CDFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

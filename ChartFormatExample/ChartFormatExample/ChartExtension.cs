@@ -169,7 +169,7 @@ namespace ChartExtension
 																				  { 90 ,new List<int>(){10, 9, 3, 2, 1}},
 																				  {100 ,new List<int>(){10, 5, 4, 2, 1}}};
 
-		private static (double axisMin, double axisMax, double interval, double division) FindOptimizedValue(double min, double max, int minDivision = 4, int maxDivision = 11)
+		public static (double axisMin, double axisMax, double interval, double division) FindOptimizedValue(double min, double max, int minDivision = 4, int maxDivision = 11)
 		{
 			int unitDigit = 0, unitSign, head;
 			double divisiton = 0;
@@ -179,12 +179,12 @@ namespace ChartExtension
 				unitDigit = Digit(max) - 1;
 				unitSign = Math.Sign(max);
 
-				if (Digit(RoundUp(max, 2)) != Digit(max))
-					head = HeadValue(max, 2);
-				else
-					head = HeadValue(RoundUp(max, 2), 2);
+                if (Digit(TrimUp(max, 2)) != Digit(max))
+                    head = HeadValue(max, 2);
+                else
+                    head = HeadValue(TrimUp(max, 2), 2);
 
-				{
+                {
 					int i = 0;
 					while (head > divs.Keys.ToArray()[i]) ++i;
 					head = divs.Keys.ToArray()[i];
@@ -225,13 +225,14 @@ namespace ChartExtension
 			{
 				unitDigit = Digit(min) - 1;
 				unitSign = Math.Sign(min);
-				if (Digit(RoundDown(min, 2)) != Digit(min))
-					head = HeadValue(min, 2);
-				else
-					head = HeadValue(RoundDown(min, 2), 2);
 
-				{
-					int i = 0;
+                if (Digit(TrimUp(min, 2)) != Digit(min))
+                    head = HeadValue(min, 2);
+                else
+                    head = HeadValue(TrimUp(min, 2), 2);
+
+                {
+                    int i = 0;
 					while (head > divs.Keys.ToArray()[i]) ++i;
 					head = divs.Keys.ToArray()[i];
 				}
