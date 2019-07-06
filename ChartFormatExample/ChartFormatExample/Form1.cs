@@ -74,5 +74,14 @@ namespace ChartFormatExample
 			ChartExtensions.Capture(chart1, Directory.GetCurrentDirectory() + "\\before.png", 3);
 			ChartExtensions.Capture(chart2, Directory.GetCurrentDirectory() + "\\after.png", 3);
 		}
-	}
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            ChartExtensions.FormatAll(chart2, 0, 0, 8, 11);
+            Debug.WriteLine($"AxisX  Min:{chart2.ChartAreas[0].AxisX.Minimum}  Max:{chart2.ChartAreas[0].AxisX.Maximum} Interval:{chart2.ChartAreas[0].AxisX.Interval}");
+            Debug.WriteLine($"AxisY  Min:{chart2.ChartAreas[0].AxisY.Minimum}  Max:{chart2.ChartAreas[0].AxisY.Maximum} Interval:{chart2.ChartAreas[0].AxisY.Interval}");
+            ChartExtensions.Capture(chart1, Directory.GetCurrentDirectory() + "\\before.png", 3);
+            ChartExtensions.Capture(chart2, Directory.GetCurrentDirectory() + "\\after.png", 3);
+        }
+    }
 }
