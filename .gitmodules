@@ -1,0 +1,3 @@
+[submodule "MathRoundExtensions"]
+	path = MathRoundExtensions
+	url = git@github.com:FragmentedNt/MathRoundExtensions.git
