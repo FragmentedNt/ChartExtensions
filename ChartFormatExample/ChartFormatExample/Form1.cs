@@ -26,7 +26,14 @@ namespace ChartFormatExample
 		{
 			this.MinimumSize = this.Size;
 			this.MaximumSize = this.Size;
-		}
+            foreach (var style in Enum.GetValues(typeof(ChartExtensions.AxisStyle)))
+            {
+                listBoxAxisStyleX.Items.Add(style);
+                listBoxAxisStyleY.Items.Add(style);
+            }
+            listBoxAxisStyleX.SelectedIndex = 0;
+            listBoxAxisStyleY.SelectedIndex = 0;
+        }
 
 		private void button1_Click(object sender, EventArgs e)
 		{
@@ -64,37 +71,39 @@ namespace ChartFormatExample
 			Debug.WriteLine("");
 			foreach (var y in allValY) Debug.Write($" {y},");
 			Debug.WriteLine("");
-			ChartExtensions.FormatAll(chart2, 0, 0, 5, 11);
-            //ChartExtensions.FormatAll(chart2, ChartExtensions.AxisStyle.MinToMax, ChartExtensions.AxisStyle.MinToMax, 4, 8);
-            //ChartExtensions.FormatAll(chart2, ChartExtensions.AxisStyle.ZeroToMax, ChartExtensions.AxisStyle.ZeroToMax , 4, 8);
-            //ChartExtensions.FormatAll(chart2, ChartExtensions.AxisStyle.MinToZero, ChartExtensions.AxisStyle.MinToZero, 4, 8);
-            //ChartExtensions.FormatAll(chart2, ChartExtensions.AxisStyle.Symmetry, ChartExtensions.AxisStyle.Symmetry, 4, 8);
+
+            button2.PerformClick();
             var result = chart2.ChartAreas[0].AxisX.Minimum < allValX.Min()
                       && chart2.ChartAreas[0].AxisX.Maximum > allValX.Max()
                       && chart2.ChartAreas[0].AxisY.Minimum < allValY.Min()
                       && chart2.ChartAreas[0].AxisY.Maximum > allValY.Max();
-            Debug.WriteLine($"AxisX  Min:{chart2.ChartAreas[0].AxisX.Minimum}  Max:{chart2.ChartAreas[0].AxisX.Maximum} Interval:{chart2.ChartAreas[0].AxisX.Interval}");
-			Debug.WriteLine($"AxisY  Min:{chart2.ChartAreas[0].AxisY.Minimum}  Max:{chart2.ChartAreas[0].AxisY.Maximum} Interval:{chart2.ChartAreas[0].AxisY.Interval}");
             Debug.WriteLine(result);
-			ChartExtensions.Capture(chart1, Directory.GetCurrentDirectory() + "\\before.png", 3);
-			ChartExtensions.Capture(chart2, Directory.GetCurrentDirectory() + "\\after.png", 3);
-		}
+        }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            chart2.Series[0].Points.Clear();
-            chart2.Series[1].Points.Clear();
-            chart2.Series[0].Points.AddXY(-1, -8.868);
-            chart2.Series[0].Points.AddXY(1, 8.187);
-            chart2.Series[1].Points.AddXY(-0.1, -0.868);
-            chart2.Series[1].Points.AddXY(0.1, 0.8187);
+            var styleX = (ChartExtensions.AxisStyle)listBoxAxisStyleX.SelectedItem;
+            var styleY = (ChartExtensions.AxisStyle)listBoxAxisStyleY.SelectedItem;
+            var divMinX = (int)numericUpDownDivMinX.Value;
+            var divMaxX = (int)numericUpDownDivMaxX.Value;
+            var divMinY = (int)numericUpDownDivMinY.Value;
+            var divMaxY = (int)numericUpDownDivMaxY.Value;
 
-
-            ChartExtensions.FormatAll(chart2, 0, 0, 5, 11);
+            ChartExtensions.FormatAll(chart2, styleX, styleY, divMinX, divMaxX, divMinY, divMaxY);
             Debug.WriteLine($"AxisX  Min:{chart2.ChartAreas[0].AxisX.Minimum}  Max:{chart2.ChartAreas[0].AxisX.Maximum} Interval:{chart2.ChartAreas[0].AxisX.Interval}");
             Debug.WriteLine($"AxisY  Min:{chart2.ChartAreas[0].AxisY.Minimum}  Max:{chart2.ChartAreas[0].AxisY.Maximum} Interval:{chart2.ChartAreas[0].AxisY.Interval}");
             ChartExtensions.Capture(chart1, Directory.GetCurrentDirectory() + "\\before.png", 3);
             ChartExtensions.Capture(chart2, Directory.GetCurrentDirectory() + "\\after.png", 3);
+        }
+
+        private void NumericUpDownDivMinX_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownDivMaxX.Minimum = numericUpDownDivMinX.Value;
+        }
+
+        private void NumericUpDownDivMinY_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownDivMaxY.Minimum = numericUpDownDivMinY.Value;
         }
     }
 }
