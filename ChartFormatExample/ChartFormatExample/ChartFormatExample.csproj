@@ -86,8 +86,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MathRoundExtensions\MathRoundExtension\MathRoundExtension\MathRoundExtension.csproj">
-      <Project>{dfd782df-a09a-4852-9baf-24f9a5a1f179}</Project>
+    <ProjectReference Include="..\..\MathRoundExtensions\MathRoundExtension\MathRoundExtension.csproj">
+      <Project>{82dc0bf0-4cca-4889-9cad-7c669b9a21bb}</Project>
       <Name>MathRoundExtension</Name>
     </ProjectReference>
   </ItemGroup>
